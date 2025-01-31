@@ -1,0 +1,85 @@
+  137  ls
+  138  cd cs131/
+  139  mkdir ws2
+  140  ls
+  141  ls ..
+  142  pwd
+  143  ls /home
+  144  pwd > ws2.txt
+  145  ls
+  146  mv ws2.txt  ./ws2/
+  147  ls
+  148  cd ws2/
+  149  cat ws2.txt 
+  150  cat /etc/passwd
+  151  awk -F: '{print $1, $3}' /etc/passwd
+  152  id -u
+  153  id
+  154  awk id {print, $1}
+  155  id | grep $1
+  156  id -Gn
+  157  id -U
+  158  id -u
+  159  id >> ws2.txt 
+  160  id -Gn >> ws2.txt 
+  161  cat ws2.txt 
+  162  vim ws2.txt 
+  163  cat ws2.txt 
+  164  id -G
+  165  id -G >> ws2.txt 
+  166  vim ws2.txt 
+  167  cat ws2.txt 
+  169  ls /proc/
+  170  ls /proc/ | grep mem
+  171  ls /proc/meminfo 
+  172  cat /proc/meminfo 
+  173  ls /proc/
+  174  ls /proc/ | grep cpu
+  175  ls /proc/cpuinfo 
+  176  cat /proc/cpuinfo 
+  178  cd cs131/ws2/
+  180  head /proc/meminfo 
+  181  cat /proc/meminfo 
+  182  head /proc/meminfo 
+  183  head /proc/meminfo >> ws2.txt 
+  184  vim ws2.txt 
+  185  head /proc/cpuinfo 
+  186  tail  /proc/cpuinfo 
+  187  head /proc/cpuinfo 
+  188  cat /proc/cpuinfo 
+  189  cat /proc/cpuinfo | grep processor
+  190  head /proc/cpuinfo 
+  191  tail /proc/c
+  192  tail /proc/cpuinfo 
+  194  cat /proc/cpuinfo 
+  195  cat /proc/cpuinfo | grep amd
+  196  cat /proc/cpuinfo | grep architecture
+  197  cat /proc/cpuinfo | grep architecture:
+  198  cat /proc/cpuinfo 
+  199  history
+  200  cat /proc/cpuinfo 
+  201  cat /proc/cpuinfo | grep lm
+  202  cat /proc/cpuinfo 
+  203  uname -m
+  204  vim cs131/ws2/ws2.txt 
+  205  cd cs131/ws2/
+  206  head /proc/cpuinfo 
+  207  vim cs131/ws2/ws2.txt 
+  208  ls
+  209  vim ws2.txt 
+  210  head /proc/cpuinfo >> ws2.txt 
+  211  vim ws2.txt 
+  212  ls /etc/
+  213  ls /etc/ | grep system
+  214  ls /etc/systemd/
+  215  ls /etc/ | grep version
+  216  ls /etc/debian_version 
+  217  cat /etc/debian_version 
+  218  ls /etc/ | grep os
+  219  ls /etc/os-release 
+  220  cat /etc/os-release 
+  221  head /etc/os-release 
+  222  cat /etc/os-release >> ws2.txt 
+  223  vim ws2.txt 
+  225  ls
+  233  history > cmds.log

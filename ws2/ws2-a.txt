@@ -1,0 +1,63 @@
+1. ws2 directory is stored in ~/cs131/
+
+2. /home/anthony_flores/cs131
+My home directory path is /home. I found this out by using the 'pwd' command to
+list the path of my current directory and saw that it was within the home directory.
+
+3.
+My UID is 1001. I found this out using the command 'id'
+
+uid=1001(anthony_flores) gid=1002(anthony_flores) groups=1002(anthony_flores),4(adm),20(dialout),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),118(netdev),119(lxd),1000(ubuntu),1001(google-sudoers)
+
+I am part of many groups, which include: adm, dialout, cdrom, floppy, etc...
+I found this out by also using the 'id' command but with the -Gn flag.
+
+anthony_flores adm dialout cdrom floppy audio dip video plugdev netdev lxd ubuntu google-sudoers
+
+This is using 'id -G' which has the group ID numbers.
+1002 4 20 24 25 29 30 44 46 118 119 1000 1001
+
+4. By using ls | grep mem and grep cpu I was able to find information on the memory and cpu in /proc/meminfo and /proc/cpuinfo.
+
+5. Here is the memory information of the server given by 'head'.
+The total memory on the server is 976896 kB or about 978 MB
+
+MemTotal:         976896 kB
+MemFree:          530524 kB
+MemAvailable:     615544 kB
+Buffers:           11632 kB
+Cached:           184648 kB
+SwapCached:            0 kB
+Active:           103548 kB
+Inactive:         152096 kB
+Active(anon):        896 kB
+Inactive(anon):    67636 kB
+
+6. Using 'head /proc/cpuinfo' I was able to determine that the CPU on the server has 1 processor. After looking up some help on Google I found that if the cpu has flags that contain "lm" then it is a x64 bit architecture. I further confirmed this by the command 'uname -m'. This server uses x86_64 architecture of AMD64
+. By using 'head proc/cpuinfo I was able to determine that the processor has a 2.20GHz speed. 
+
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 79
+model name	: Intel(R) Xeon(R) CPU @ 2.20GHz
+stepping	: 0
+microcode	: 0xffffffff
+cpu MHz		: 2199.998
+cache size	: 56320 KB
+physical id	: 0
+
+7. The file path of /etc/os_version tells us that the operating system version is Ubuntu 20.04.4 LTS
+
+NAME="Ubuntu"
+VERSION="20.04.6 LTS (Focal Fossa)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 20.04.6 LTS"
+VERSION_ID="20.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=focal
+UBUNTU_CODENAME=focal
