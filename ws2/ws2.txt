@@ -1,8 +1,8 @@
 1. ws2 directory is stored in ~/cs131/
 
-2. /home/anthony_flores/cs131
-My home directory path is /home. I found this out by using the 'pwd' command to
-list the path of my current directory and saw that it was within the home directory.
+2. /home/anthony_flores
+My home directory path is /home/anthony_flores. I found this out by using the 'pwd' command to
+list the path of my current directory after 'cd ~' and saw that it was within the home directory.
 
 3.
 My UID is 1001. I found this out using the command 'id'
