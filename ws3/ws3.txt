@@ -1,0 +1,38 @@
+What's up TA
+
+Task 1:
+
+Here I used the command
+grep 2019-01-02 2019-01-h1.csv | cut -d',' -f8 | sort -n  | uniq -c | sort -nr |head -3
+
+Let me break down the command.
+
+grep 2019-01-02 2019-01-h1.csv
+grep is used to filter only lines that contain the date 2019-01-02.
+
+cut -d',' -f8
+is used to return a "cut" of the output for the .csv file and -d changes the delimiter of the command to ',' since the file we are using seperates the fields with commas. The -f8 part specifies to only return the eigth column which is determined by the dilimiter (commas) which represents the pick up location ID.
+
+sort
+The sort command will order the id values (numerically -n) and is required prior to the uniq command otherwise when using uniq it will not properly asses duplicate ids since they are not consecutive.
+
+uniq -c
+uniq -c shows the amount of times a specific value is repeated, but only if the lines are consecutive (this is why we use sort prior to this)
+
+sort -nr
+This final pipe to sort will organize the values (numerically with -n) which indicate how many times a value is repeated and reverse the output so that the most frequent value appears first (-r)
+
+output:
+   8605 161.0
+   8407 132.0
+   8163 186.0
+
+Task 2:
+The same steps as Task 1 but changing the date on grep to 2019-01-10
+
+grep 2019-01-10 2019-01-h1.csv | cut -d',' -f8 | sort -n  | uniq -c | sort -nr |head -3
+
+Output:
+  13738 237.0
+  13519 236.0
+  12997 161.0
