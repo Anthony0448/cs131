@@ -1,0 +1,11 @@
+  602  cut -d',' -f8 2019-01-h1.csv | sort | uniq -c 
+  603  cut -d',' -f8 2019-01-h1.csv | sort | uniq -c | sort -n
+  604  cut -d',' -f8 2019-01-h1.csv | sort | uniq -c | sort -nr
+  605  cut -d',' -f8 2019-01-h1.csv | sort | uniq -c | sort -nr > ws3.txt 
+  621  cut -d',' -f8 2019-01-h1.csv | sort | uniq -c | sort -nr ; cat ws3.txt 
+  623  cut -d',' -f8 2019-01-h1.csv | grep 2019-01-02  | sort | uniq -c | sort -nr
+  627  grep 2019-01-02 2019-01-h1.csv | cut -d',' -f8 | sort -n  | uniq -c | sort -nr
+  628  grep '"2019-01-02' 2019-01-h1.csv | cut -d',' -f8 | sort -n  | uniq -c | sort -nr
+  647  grep 2019-01-10 2019-01-h1.csv | cut -d',' -f8 | sort -n  | uniq -c | sort -nr |head -3 >> ws3.txt 
+  649  grep 2019-01-10 2019-01-h1.csv | cut -d',' -f8 | sort -n  | uniq -c | sort -nr
+  650  grep 2019-01-10 2019-01-h1.csv | cut -d',' -f8 | sort -n  | uniq -c | sort -nr | head -3 >> ws3.txt
