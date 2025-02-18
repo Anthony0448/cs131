@@ -1,0 +1,48 @@
+ 1089  grep "151.0,239.0" 2019-01-h1.csv | cut -d',' -f11 > ./FARE/151.0-239.0.txt
+ 1091  grep "151.0,239.0" 2019-01-h1.csv
+ 1093  grep "7.0,219.0" 2019-01-h1.csv | cut -d',' -f11 > ./FARE/7.0-129.0.txt
+ 1095  grep "7.0,219.0" 2019-01-h1.csv
+ 1097  man paste
+ 1098  man bc
+ 1099  man paste
+ 1105  paste -s -d+ FARE/7.0-129.0.txt | bc
+ 1106  paste -s -d+ FARE/7.0-129.0.txt | bc -l
+ 1107  paste -s -d+ FARE/7.0-129.0.txt | bc
+ 1108  paste -s -d+ FARE/7.0-129.0.txt | uniq -c
+ 1109  uniq -c FARE/7.0-129.0.txt 
+ 1110  man uniq
+ 1111  wc -l FARE/7.0-129.0.txt 
+ 1112  man wc
+ 1113  wc -l FARE/7.0-129.0.txt 
+ 1114  wc -l FARE/7.0-129.0.txt | grep ??
+ 1115  wc -l FARE/7.0-129.0.txt 
+ 1116  paste -s -d+ FARE/7.0-129.0.txt 
+ 1117  paste -s -d+ FARE/7.0-129.0.txt | bc
+ 1118  echo "$(paste -s -d+ FARE/7.0-129.0.txt) / $(wc -l)" | bc
+ 1119  echo "$(paste -s -d+ FARE/7.0-129.0.txt) / $(wc -l FARE/7.0-129.0.txt )" | bc
+ 1122  echo "$(paste -s -d+ /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt) / $(wc -l /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt )" | bc
+ 1123  echo "$(paste -s -d+ /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt) / $(wc -l /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt)" | bc
+ 1124  echo "$(paste -s -d+ /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt) / $(wc -l <  /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt)" | bc
+ 1125  paste -s -d+ FARE/7.0-129.0.txt | bc
+ 1126  cd ..
+ 1127  paste -s -d+ FARE/7.0-129.0.txt | bc
+ 1128  wc -l FARE/7.0-129.0.txt 
+ 1129  paste -s -d+ FARE/7.0-129.0.txt | bc
+ 1130  paste -s -d+ FARE/7.0-129.0.txt | bc >
+ 1131  paste -s -d+ FARE/7.0-129.0.txt | bc 
+ 1132  echo "$(paste -s -d+ /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt) / $(wc -l <  /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt)" | bc -l
+ 1133  paste -s -d+ FARE/7.0-129.0.txt | bc 
+ 1134  wc -l FARE/7.0-129.0.txt 
+ 1136  448.58 / 10 | bc -l
+ 1137  echo "448.58 / 10" | bc -l
+ 1138  echo "448.58 / 10" | bc
+ 1146  echo "($(paste -s -d+ /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt)) / $(wc -l < /home/anthony_flores/cs131/a1/FARE/7.0-129.0.txt)" | bc -l >> a1.txt 
+ 1149  echo "($(paste -s -d+ /home/anthony_flores/cs131/a1/FARE/151.0-239.0.txt)) / $(wc -l < /home/anthony_flores/cs131/a1/FARE/151.0-239.0.txt)" | bc -l >> a1.txt 
+ 1161  grep 2019-01-10 2019-01-h1.csv | cut -d',' -f11 | sort -nr | head -10
+ 1165  grep 2019-01-10 2019-01-h1.csv | cut -d',' -f11 | sort -nr | head -1
+ 1166  grep 2019-01-10 2019-01-h1.csv | cut -d',' -f11 | sort -nr | head -1 >> a1.txt 
+ 1179  history
+ 1187  grep -E '^([^,]*,){3}3\.0,' 2019-01-h1.csv | head -5
+ 1196  grep -E '^([^,]*,){3}3\.0,' 2019-01-h1.csv | cut -d',' -f9 | sort -n | uniq -c | sort -nr | head -10
+ 1197  grep -E '^([^,]*,){3}3\.0,' 2019-01-h1.csv | cut -d',' -f9 | sort -n | uniq -c | sort -nr | head -10 >> a1.txt 
+ 1202  history > cmds.log
