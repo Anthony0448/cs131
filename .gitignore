@@ -1,2 +1,5 @@
 # Just the file name ignores all files in all directories with this name
 2019-01-h1.csv
+
+# Ignore csv files in /ws4 directory
+/ws4/*.csv
