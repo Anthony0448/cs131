@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for i in $HOME/.bash*; do
+	echo $i
+done

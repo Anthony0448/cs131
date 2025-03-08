@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# FILE="$HOME/.bashrc"
+
+echo -n "input a file name:"
+read FILE
+
+if [ -f "$FILE" ]; then
+	file ~/.bashrc
+	echo "$FILE is a regular file"
+fi
+
+if [ -d "$FILE" ]; then
+	echo "$FILE is a directory file"
+fi
+
+# -d checks if it is a directory as opposed to a file
+if [ -d ~/cs131 ]; then
+	file ~/cs131
+	echo "/~/cs131 is a directory file"
+fi
+
