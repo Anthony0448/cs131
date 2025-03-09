@@ -18,7 +18,7 @@ sed -n '/^[1.0,]/ p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_t
 # Check if the .csv file is made
 if [ -f "$HOME"/cs131/ws4/"$current_time".csv ]; then
     # Double double quotes for environmental variables that already were in quotes
-    echo "file created: ""$HOME""/cs131/ws4/""$current_time"".csv"""
+    echo "File created: ""$HOME""/cs131/ws4/""$current_time"".csv"""
 else
     echo "Error creating file ""$current_time"".csv"
 fi
@@ -33,7 +33,7 @@ sed -n '/^[2.0,]/ p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_t
 
 # Check if the .csv file is made
 if [ -f "$HOME"/cs131/ws4/"$current_time".csv ]; then
-    echo "file created: ""$HOME""/cs131/ws4/""$current_time"".csv"""
+    echo "File created: ""$HOME""/cs131/ws4/""$current_time"".csv"""
 else
     echo "Error creating file ""$current_time"".csv"
 fi
@@ -48,7 +48,20 @@ sed -n '/^[4.0,]/ p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_t
 
 # Check if the .csv file is made
 if [ -f "$HOME"/cs131/ws4/"$current_time".csv ]; then
-    echo "file created: ""$HOME""/cs131/ws4/""$current_time"".csv"""
+    echo "File created: ""$HOME""/cs131/ws4/""$current_time"".csv"""
 else
     echo "Error creating file ""$current_time"".csv"
 fi
+
+echo ""
+
+# For every .csv file in current directory, add it to the .gitignore
+# No ./ precedes the '*.csv' because .gitignore does not ignore files in current directory...
+# if they start with anything besides the exact file name such as, ./2025-00-00.csv
+for file in *.csv; do
+    # $ echo is used to append each name (echo output) to the .gitignore
+    # Added to a local .gitignore
+    echo "$file" >>./.gitignore
+
+    echo "File added to .gitignore: ""$file"""
+done
