@@ -86,3 +86,6 @@ for file in *.csv; do
     # the wc output for each csv file is appended to ws4.txt
     wc "$file" >>./ws4.txt
 done
+
+# cat output for .gitignore
+cat ./.gitignore >>./ws4.txt
