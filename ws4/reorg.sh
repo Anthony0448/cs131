@@ -13,7 +13,13 @@ get_current_time
 
 # Using environment variable for home since this is a script and home directory can vary
 # Environment variable is wrapped in double quotes to prevent splitting
-sed -n '/^[1.0,]/ p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_time".csv
+
+# Explaining command:
+# The sed command helps manipulate a given input. In this case the .csv file is being inputted...
+# where the sed command will manipulate the input to only contain lines matching a specific vendorid
+# -n prevents printing the output to the terminal
+#
+sed -n '/^1\.0,/p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_time".csv
 
 # Check if the .csv file is made
 if [ -f "$HOME"/cs131/ws4/"$current_time".csv ]; then
@@ -29,7 +35,7 @@ echo ""
 # Call function to update variable to current time after first file is made
 get_current_time
 
-sed -n '/^[2.0,]/ p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_time".csv
+sed -n '/^2\.0,/p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_time".csv
 
 # Check if the .csv file is made
 if [ -f "$HOME"/cs131/ws4/"$current_time".csv ]; then
@@ -44,7 +50,7 @@ echo ""
 # Call function to update variable to current time after first file is made
 get_current_time
 
-sed -n '/^[4.0,]/ p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_time".csv
+sed -n '/^4\.0,/p' "$HOME"/cs131/2019-01-h1.csv >"$HOME"/cs131/ws4/"$current_time".csv
 
 # Check if the .csv file is made
 if [ -f "$HOME"/cs131/ws4/"$current_time".csv ]; then
@@ -53,6 +59,7 @@ else
     echo "Error creating file ""$current_time"".csv"
 fi
 
+# Line break
 echo ""
 
 # For every .csv file in current directory, add it to the .gitignore
