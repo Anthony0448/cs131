@@ -1,0 +1,5 @@
+BEGIN {FS=":"}
+{
+	if ($7 == "/bin/bash") bash_users++
+}
+END {print bash_users, "users are having bash as their default shell" }
