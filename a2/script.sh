@@ -33,6 +33,7 @@ CompressBackup() {
 
     # $selectedFileDirname gets the directory path ecluding the file and $selectedFileBasename is the name of the file
     # This is needed otherwise when exporting it nests the output into folders
+    # Timestamp is added to backup up files
     tar -vczf "$HOME"/Backups/"$selectedFileBasename"-"$current_time".tar.gz -C "$selectedFileDirname" "$selectedFileBasename"
 }
 
@@ -48,6 +49,8 @@ DecompressBackup() {
     echo "Files and directories in $HOME/Backups"
 
     # Add the .tar.gz since the compressed files will contain this
+    # items is an array of full paths in $HOME and appends .tar.gz
+    # The items[@] references all elements in the array
     items=("$HOME"/Backups/*.tar.gz)
     names=("${items[@]##*/}") # Extract just the names ; ##*/ removes between and including the last '/'
 
@@ -82,6 +85,7 @@ DecompressBackup() {
     echo "2) Specify exact location"
 
     # Read input for options to store in $extract_choice
+    # -r is good practice when using read in case input has an escaping character
     read -rp "Enter your selection (1 or 2): " extract_choice
 
     # Create directory to hold extraction while choice on where to put it is made
@@ -119,7 +123,7 @@ DecompressBackup() {
             echo "Directory $custom_path doesn't exist. Creating it..."
 
             mkdir -p "$custom_path"
-            
+
             # Move all files from the temporary folder to the specified user path
             mv "$extract_temp"/* "$custom_path"
 
