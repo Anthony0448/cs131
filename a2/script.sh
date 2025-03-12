@@ -1,13 +1,5 @@
 #!/bin/bash
 
-# To do
-# Schedule backups
-# Cleanup old backups after some days
-# Use functions in switch
-# Make user prompt which directory to go into instead of just $HOME?
-# Possibly implement a search feature to pull up backups of a specific date
-# Add backup and delete non compressed version
-
 # Function that updates current_time variable each time it is called
 get_current_time() {
     # Variable that's value is set to the $date command output
@@ -55,7 +47,8 @@ DecompressBackup() {
 
     echo "Files and directories in $HOME/Backups"
 
-    items=("$HOME"/Backups/*)
+    # Add the .tar.gz since the compressed files will contain this
+    items=("$HOME"/Backups/*.tar.gz)
     names=("${items[@]##*/}") # Extract just the names ; ##*/ removes between and including the last '/'
 
     echo "Select the file you would like to work with:"
@@ -73,7 +66,7 @@ DecompressBackup() {
                 break
             fi
         else
-            echo "Invalid selectedFile. Try again."
+            echo "Invalid selection. Try again."
         fi
     done
 
@@ -83,13 +76,69 @@ DecompressBackup() {
     # Line break for clarity
     echo ""
 
-    # Extract compressed file
-    # -v for verbose to see where the file is extracted to
-    # -x to extract compressed file
-    # -z to use gzip decompression
-    # -f to specify the file to decompress
-    # -C is needed to specify the folder where the extractions will be
-    tar -vxzf "$selectedFile" -C "$HOME"/Backups/
+    # Show options of where to extract
+    echo "Where would you like to extract the files?"
+    echo "1) Extract to $HOME/Backups/extracted/"
+    echo "2) Specify exact location"
+
+    # Read input for options to store in $extract_choice
+    read -rp "Enter your selection (1 or 2): " extract_choice
+
+    # Create directory to hold extraction while choice on where to put it is made
+    extract_temp="$HOME/Backups/temp_extract"
+
+    # Make the directory if it does not already exist
+    # -p creates parent directories if needed
+    mkdir -p "$extract_temp"
+
+    # Extract $slectedFile to temp directory first since we do not know where to put it yet
+    tar -xzf "$selectedFile" -C "$extract_temp"
+
+    # Switch case for where to extract
+    case $extract_choice in
+    1)
+        # Make extracted folder location
+        mkdir -p "$HOME/Backups/extracted"
+
+        # Move all files in the temporary extractd folder to extracted (there should only be the current extracted files)
+        mv "$extract_temp"/* "$HOME/Backups/extracted/"
+        echo "Files extracted to $HOME/Backups/extracted/"
+        ;;
+    2)
+        # Let user specify a location
+        read -rp "Enter the full path where you want to extract: " custom_path
+
+        # Check if provided path is a valid directory
+        if [ -d "$custom_path" ]; then
+            # Move all files from the temporary folder to the specified path
+            mv "$extract_temp"/* "$custom_path"
+
+            echo "Files extracted to $custom_path"
+        else
+            # If the directory does not exist, then make it
+            echo "Directory $custom_path doesn't exist. Creating it..."
+
+            mkdir -p "$custom_path"
+            
+            # Move all files from the temporary folder to the specified user path
+            mv "$extract_temp"/* "$custom_path"
+
+            echo "Files extracted to $custom_path"
+        fi
+        ;;
+
+    *)
+        # Default case extracts to the extracted folder
+        echo "Invalid choice. Extracting to $HOME/Backups/extracted/"
+
+        mkdir -p "$HOME/Backups/extracted"
+
+        mv "$extract_temp"/* "$HOME/Backups/extracted/"
+        ;;
+    esac
+
+    # Removes anything left in the temporary folder as there should not be anything left in it for next use
+    rm -rf "$extract_temp"
 }
 
 # Make it so the backups have the time and date in their names
@@ -100,7 +149,7 @@ select selectedOption in "${options[@]}"; do
         echo "You picked: $selectedOption"
         break
     else
-        echo "Invalid selectedFile. Try again."
+        echo "Invalid selection. Try again."
     fi
 done
 
@@ -138,10 +187,10 @@ if [[ "$selectedOption" != "Decompress backup" ]]; then
 
                 break
             else
-                echo "Invalid selectedFile. Try again."
+                echo "Invalid selection. Try again."
             fi
         else
-            echo "Invalid selectedFile. Try again."
+            echo "Invalid selection. Try again."
         fi
     done
 
@@ -153,12 +202,27 @@ if [[ "$selectedOption" != "Decompress backup" ]]; then
 fi
 
 # Switch statement for the menu options
-# Add functions numbnuts
 case "$selectedOption" in
 "Backup & compress")
     CompressBackup
     ;;
-"Backup, compress, & delete non-compressed") ;;
+"Backup, compress, & delete non-compressed")
+    # For the compress and delete option just use CompressBackup function and then delete the specified folder
+    CompressBackup
+
+    echo "Would you like to delete the original file/directory? (y/n)"
+
+    read -rp "> " delete_choice
+
+    # Did not get switch case in switch case to work, so if statement it is
+    # or '||' used t get either capital or lowercase
+    if [[ "$delete_choice" == "y" || "$delete_choice" == "Y" ]]; then
+        rm -rf "$selectedFile"
+        echo "Original file/directory deleted."
+    else
+        echo "Original file/directory was not deleted."
+    fi
+    ;;
 "Decompress backup")
     DecompressBackup
     ;;
