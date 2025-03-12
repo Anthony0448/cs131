@@ -28,6 +28,7 @@ CompressBackup() {
 
     # Get the basename
     selectedFileBasename=$(basename "$selectedFile")
+    selectedFileDirname=$(dirname "$selectedFile")
 
     # Call function to update variable to current time
     get_current_time
@@ -36,10 +37,22 @@ CompressBackup() {
     # -c makes a new archive
     # -z utilizes the gzip compression algorithm
     # -f lets us choose the filename for the backup
-    tar -vczf "$HOME"/Backups/"$selectedFileBasename"-"$current_time".tar.gz "$selectedFile"
+    # -C specify directory to get file to compress
+
+    # $selectedFileDirname gets the directory path ecluding the file and $selectedFileBasename is the name of the file
+    # This is needed otherwise when exporting it nests the output into folders
+    tar -vczf "$HOME"/Backups/"$selectedFileBasename"-"$current_time".tar.gz -C "$selectedFileDirname" "$selectedFileBasename"
 }
 
 DecompressBackup() {
+    if [ ! -d "$HOME"/Backups ]; then
+        echo "$HOME/Backups does not exist...making directory"
+
+        mkdir "$HOME"/Backups
+    else
+        echo "$HOME/Backups exists...continuing with backup"
+    fi
+
     echo "Files and directories in $HOME/Backups"
 
     items=("$HOME"/Backups/*)
@@ -70,7 +83,13 @@ DecompressBackup() {
     # Line break for clarity
     echo ""
 
-    # tar -vxzf ~/Backups/hi.txt-2025-03-12-03\:11\:13.tar.gz
+    # Extract compressed file
+    # -v for verbose to see where the file is extracted to
+    # -x to extract compressed file
+    # -z to use gzip decompression
+    # -f to specify the file to decompress
+    # -C is needed to specify the folder where the extractions will be
+    tar -vxzf "$selectedFile" -C "$HOME"/Backups/
 }
 
 # Make it so the backups have the time and date in their names
@@ -108,12 +127,12 @@ if [[ "$selectedOption" != "Decompress backup" ]]; then
             # Set $selectedFile to the the full path by adding $HOME beofre $name. Needed for if statements to work
             selectedFile="$HOME/$name"
 
-            # If directory
+            # If file is a directory
             if [ -d "$selectedFile" ]; then
                 echo "You selected the directory: $name"
 
                 break
-            # If file
+            # If file type
             elif [ -f "$selectedFile" ]; then
                 echo "You selected the file: $name"
 
@@ -131,7 +150,6 @@ if [[ "$selectedOption" != "Decompress backup" ]]; then
 
     # Line break for clarity
     echo ""
-
 fi
 
 # Switch statement for the menu options
