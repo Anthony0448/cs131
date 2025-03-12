@@ -17,7 +17,7 @@ get_current_time() {
     return
 }
 
-FileBackup() {
+CompressBackup() {
     if [ ! -d "$HOME"/Backups ]; then
         echo "$HOME/Backups does not exist...making directory"
 
@@ -37,6 +37,38 @@ FileBackup() {
     # -z utilizes the gzip compression algorithm
     # -f lets us choose the filename for the backup
     tar -vczf "$HOME"/Backups/"$selectedFileBasename"-"$current_time".tar.gz "$selectedFile"
+}
+
+DecompressBackup() {
+    echo "Files and directories in $HOME/Backups"
+
+    items=("$HOME"/Backups/*)
+    names=("${items[@]##*/}") # Extract just the names ; ##*/ removes between and including the last '/'
+
+    echo "Select the file you would like to work with:"
+
+    select name in "${names[@]}"; do
+        # -n ensures the selection is nonempty
+        if [[ -n "$name" ]]; then
+            # Set $selectedFile to the the full path by adding $HOME beofre $name. Needed for if statements to work
+            selectedFile="$HOME/Backups/$name"
+
+            # If directory
+            if [ -f "$selectedFile" ]; then
+                echo "You selected the compressed file: $name"
+
+                break
+            fi
+        else
+            echo "Invalid selectedFile. Try again."
+        fi
+    done
+
+    # Use the selected directory in your script
+    echo "Proceeding with the selection: $selectedFile"
+
+    # Line break for clarity
+    echo ""
 
     # tar -vxzf ~/Backups/hi.txt-2025-03-12-03\:11\:13.tar.gz
 }
@@ -56,52 +88,61 @@ done
 # Line break for clarity
 echo ""
 
-# List all files and directories (names only not exact path for display)
-# This array holds the full paths for the files in $HOME
-echo "Files and directories in $HOME"
-items=("$HOME"/*) # Array of full paths in $HOME
+# Make sure if decompress is selected then skip this whole chunk otherwise prompt to select file to backup
+if [[ "$selectedOption" != "Decompress backup" ]]; then
 
-# Each element in ${names[]} represents an element in ${items[]}, but only the name not the full path
-names=("${items[@]##*/}") # Extract just the names ; ##*/ removes between and including the last '/'
+    # List all files and directories (names only not exact path for display)
+    # This array holds the full paths for the files in $HOME
+    echo "Files and directories in $HOME"
+    items=("$HOME"/*) # Array of full paths in $HOME
 
-echo "Select the file you would like to work with:"
+    # Each element in ${names[]} represents an element in ${items[]}, but only the name not the full path
+    names=("${items[@]##*/}") # Extract just the names ; ##*/ removes between and including the last '/'
 
-# Use select to provide an interactive menuu for selecting a directory instead of typing full path
-select name in "${names[@]}"; do
-    # -n ensures the selection is nonempty
-    if [[ -n "$name" ]]; then
-        # Set $selectedFile to the the full path by adding $HOME beofre $name. Needed for if statements to work
-        selectedFile="$HOME/$name"
+    echo "Select the file you would like to work with:"
 
-        # If directory
-        if [ -d "$selectedFile" ]; then
-            echo "You selected the directory: $name"
+    # Use select to provide an interactive menuu for selecting a directory instead of typing full path
+    select name in "${names[@]}"; do
+        # -n ensures the selection is nonempty
+        if [[ -n "$name" ]]; then
+            # Set $selectedFile to the the full path by adding $HOME beofre $name. Needed for if statements to work
+            selectedFile="$HOME/$name"
 
-            break
-        # If file
-        elif [ -f "$selectedFile" ]; then
-            echo "You selected the file: $name"
+            # If directory
+            if [ -d "$selectedFile" ]; then
+                echo "You selected the directory: $name"
 
-            break
+                break
+            # If file
+            elif [ -f "$selectedFile" ]; then
+                echo "You selected the file: $name"
+
+                break
+            else
+                echo "Invalid selectedFile. Try again."
+            fi
         else
             echo "Invalid selectedFile. Try again."
         fi
-    else
-        echo "Invalid selectedFile. Try again."
-    fi
-done
+    done
 
-# Use the selected directory in your script
-echo "Proceeding with the selection: $selectedFile"
+    # Use the selected directory in your script
+    echo "Proceeding with the selection: $selectedFile"
 
-# Line break for clarity
-echo ""
+    # Line break for clarity
+    echo ""
+
+fi
 
 # Switch statement for the menu options
 # Add functions numbnuts
 case "$selectedOption" in
-"Backup file or directory")
-    FileBackup
+"Backup & compress")
+    CompressBackup
+    ;;
+"Backup, compress, & delete non-compressed") ;;
+"Decompress backup")
+    DecompressBackup
     ;;
 # End case options
 esac
