@@ -72,4 +72,12 @@ Where would you like to extract the files?
 2) Specify exact location
 Enter your selection (1 or 2): 1
 Files extracted to /home/anthony_flores/Backups/extracted/
+
+anthony_flores@instance-20250127-200635:~/cs131/a2$ ls ~/Backups/
+example-2025-03-12-06:10:06.tar.gz  extracted
+anthony_flores@instance-20250127-200635:~/cs131/a2$ ls ~/Backups/extracted/
+example
+anthony_flores@instance-20250127-200635:~/cs131/a2$ ls ~/Backups/extracted/example/
+a.txt  b.sh  c.log  dir
+anthony_flores@instance-20250127-200635:~/cs131/a2$
 ```
