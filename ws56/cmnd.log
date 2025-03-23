@@ -1,0 +1,58 @@
+ 1856  sed -n '/^2\.0/ p' ~/cs131/2019-01-h1.csv | cut -d',' -f1 | uniq -c
+ 1857  sed -n '/^2\.0/ p' ~/cs131/2019-01-h1.csv | cut -d',' -f1 | sort | uniq -c
+ 1859  sed -n '/^2\.0/ p' ~/cs131/2019-01-h1.csv | cut -d',' -f1
+ 1860  sed -n '/^2\.0/ p' ~/cs131/2019-01-h1.csv | head
+ 1861  sed -n '/^2\.0/p' ~/cs131/2019-01-h1.csv | head
+ 1862  sed -n '/^2\.0/ p' ~/cs131/2019-01-h1.csv | head
+ 1863  sed -n '/^2\.0/ p' ~/cs131/2019-01-h1.csv >> ./vendor2.csv
+ 1865  head vendor2.csv 
+ 1875  wc vendor2.csv >> ws56.txt 
+ 1890  sed -n '/^2\.0/ p' ~/cs131/2019-01-h1.csv | head
+ 1895  sed '/2/d' ~/cs131/2019-01-h1.csv
+ 1896  sed -n '/2/d' ~/cs131/2019-01-h1.csv
+ 1897  head ~/cs131/2019-01-h1.csv 
+ 1899  sed -n '/2/d' ~/cs131/2019-01-h1.csv | head
+ 1900  sed -n '/2/dp' ~/cs131/2019-01-h1.csv | head
+ 1901  sed -n '/2/d' ~/cs131/2019-01-h1.csv | head
+ 1902  cat ws5.txt 
+ 1903  sed -n 's /2\.0// g' ~/cs131/2019-01-h1.csv | head
+ 1904  sed -n 's/2\.0// g' ~/cs131/2019-01-h1.csv | head
+ 1905  sed 's/2\.0// g' ~/cs131/2019-01-h1.csv | head
+ 1906  head ~/cs131/2019-01-h1.csv 
+ 1907  sed 's/2\.0// g' ~/cs131/2019-01-h1.csv | head
+ 1908  vim ws5.txt 
+ 1909  sed 's/2\.0// g' ~/cs131/2019-01-h1.csv | head
+ 1910  sed 's/\:\"\-// g' ~/cs131/2019-01-h1.csv | head
+ 1911  head ~/cs131/2019-01-h1.csv 
+ 1912  sed 's/:"-// g' ~/cs131/2019-01-h1.csv | head
+ 1913  vim ws5.txt 
+ 1914  sed 's/[:"-]//g' ~/cs131/2019-01-h1.csv | head
+ 1915  vim ws5.txt 
+ 1916  sed 's/[:"-]//g' ~/cs131/2019-01-h1.csv > no-separators.csv ; echo "no-separators.csv" < .gitignore 
+ 1918  cat .gitignore 
+ 1919  vim ws5.txt 
+ 1920  vim ws56.txt 
+ 1921  sed 's/[:"-]//g' ~/cs131/2019-01-h1.csv | head -10 > ws56.txt 
+ 1922  vim ws56.txt 
+ 1930  sed 's/[:"-]//g' ~/cs131/2019-01-h1.csv | head -10 >> ws56.txt 
+ 1944  head no-separators.csv 
+ 1952  sed 's/[:"-]//g' ~/cs131/2019-01-h1.csv | head -10
+ 1953  sed 's/\.[0-9]*//g' ~/cs131/2019-01-h1.csv | head -10
+ 1954  sed 's/[:"-]//g' ~/cs131/2019-01-h1.csv | head -10
+ 1955  sed 's/\.[0-9]*//g' ~/cs131/2019-01-h1.csv | head -10
+ 1956  sed 's/[:"-]//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1957  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1958  sed 's/\.[0-9]//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1959  head no-separators.csv -10
+ 1960  head -10 no-separators.csv 
+ 1961  sed 's/\.[0-9]//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1962  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1963  head -10 no-separators.csv 
+ 1964  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1965  sed 's/\.[0-9]//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1966  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1967  head -10 no-separators.csv 
+ 1968  sed -E 's/([0-9]+)\.[0-9]+/\1/g' no-separators.csv | head -10
+ 1969  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv | head -10
+ 1973  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv > ./no-fractions.csv
+ 1981  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv > ./no-fractions.csv

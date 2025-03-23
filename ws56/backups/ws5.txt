@@ -1,0 +1,27 @@
+Commands used for Task 1
+sed -n '/^2\.0/ p' ~/cs131/2019-01-h1.csv
+1. -n dictates
+2. Enclose the sed instructions in single quotes
+3. The enclosing slashes are used for the instructions /inst/
+4. ^2\.0 Specifies to match (implied) the start of the line '2.0'
+5. The p at the end of the single quotes tells sed to print all the lines
+
+2)
+For substitution with sed to remove delimiters
+The syntax for substitution with $ sed is:  s/pattern/replacement/flags
+
+$ sed 's/[:"-]//g' ~/cs131/2019-01-h1.csv
+
+1. The 's/' in the beginning is to initiate substitution
+2. The g at the end is to make the instructions global and not just change the first instance per line
+# Remember, character classes [xyz] should be used when we want to match any one character from the set
+3. Within the character class we match the delimiter symvols
+4. Another slash follows the character class for the substitution part which is empty since we are removing '//'
+
+3)
+Removing the fractional parts of all numbers
+
+$ sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv
+
+1. \.[0-9] matches all input that begins with a period and is followed by some numbers 0 or more times '*'
+Without the * the regex would only match values with a single digit
