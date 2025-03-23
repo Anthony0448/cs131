@@ -56,3 +56,7 @@
  1969  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv | head -10
  1973  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv > ./no-fractions.csv
  1981  sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv > ./no-fractions.csv
+ 
+ 1990  awk -f awkscript.awk ~/cs131/2019-01-h1.csv >> ws56.txt 
+ 1991  awk -f awkscript.awk ~/cs131/2019-01-h1.csv | sort -nr -k 2,2 >> ws56.txt 
+ 1992  awk -f awkscript.awk ~/cs131/2019-01-h1.csv | sort -nr -k 2,2 | head -20  >> ws56.txt 
