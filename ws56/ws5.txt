@@ -17,3 +17,11 @@ $ sed 's/[:"-]//g' ~/cs131/2019-01-h1.csv
 # Remember, character classes [xyz] should be used when we want to match any one character from the set
 3. Within the character class we match the delimiter symvols
 4. Another slash follows the character class for the substitution part which is empty since we are removing '//'
+
+3)
+Removing the fractional parts of all numbers
+
+$ sed 's/\.[0-9]*//g' ~/cs131/ws56/no-separators.csv
+
+1. \.[0-9] matches all input that begins with a period and is followed by some numbers 0 or more times '*'
+Without the * the regex would only match values with a single digit
