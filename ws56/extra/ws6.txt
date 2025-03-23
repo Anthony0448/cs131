@@ -1,0 +1,9 @@
+Task 2 awk
+
+1)
+Command used
+awk -f awkscript.awk ~/cs131/2019-01-h1.csv
+
+2)
+For the top 20 in descending order
+$ awk -f awkscript.awk ~/cs131/2019-01-h1.csv | sort -nr -k 2,2 | head -20
