@@ -1,0 +1,17 @@
+ 1997  awk -f grader.awk grades.csv 
+ 1998  cat grader.awk
+ 1999  vim grader.awk
+ 2000  awk -f grader.awk grades.csv 
+ 2001  pwd
+ 2002  awk -f grader.awk grades.csv 
+ 2003  vim grader.awk
+ 2004  awk -f grader.awk grades.csv >> a3.txt 
+ 2005  awk -f grader.awk grades.csv
+ 2006  clear
+ 2007  awk -f grader.awk grades.csv
+ 2008  vim grader.awk
+ 2009  awk -f grader.awk grades.csv
+ 2010  vim grader.awk
+ 2011  awk -f grader.awk grades.csv
+ 2012  awk -f grader.awk grades.csv > a3.txt 
+ 2018  history > cmnds.log
