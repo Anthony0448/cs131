@@ -1,0 +1,29 @@
+OUTPUT:
+# The total grade sum is found by doing a += for each line of the csv in an associated array where the index is the student name (column $2)
+# The average grade is found by making a function that takes in 3 parameters that correspond to the student scores in each columns. These are stored in an associated array
+# Checking if a student failed or passed is done by doing an if else statement check in the associated array of the average grade
+
+David has a total grade sum of 195
+David has an average grade of 65
+David failed
+
+Eve has a total grade sum of 265
+Eve has an average grade of 88.3333
+Eve passed
+
+Bob has a total grade sum of 246
+Bob has an average grade of 82
+Bob passed
+
+Charlie has a total grade sum of 270
+Charlie has an average grade of 90
+Charlie passed
+
+Alice has a total grade sum of 253
+Alice has an average grade of 84.3333
+Alice passed
+
+# The lowest and highest scores are found by setting an initial grade average value. In this case I chose Alice since it's the first
+# student in the csv file. Once that is established, in a for loop compare that base value with each value in the array to check if a new highest or lowest is found
+The lowest scoring student is: David
+The highest scoring student is: Charlie
