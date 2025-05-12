@@ -1,0 +1,12 @@
+id,name,age,email,score
+001,Bob,21,bobby@yahoo.com,71
+023,,22,noname@gmail.com,100
+281,Joe,,joe@sjsu.edu,88
+,Amy,,amy@amy.com,21
+412,Erick,20,erick@google.com,,
+,,,,
+,Oliver,24,,91
+999,Maria,19,maria@email.com,96
+237,Arnold,28,,,
+291,Lola,28,lol@la.com,73
+092,Guy,34,e@mail.com,99
